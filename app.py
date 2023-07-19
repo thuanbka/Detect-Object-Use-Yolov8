@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-from waitress import serve
+#from waitress import serve
 from PIL import Image
 from flask import Flask, render_template, request, Response
 import json
@@ -41,4 +41,4 @@ def detect_objects_on_image(buf, type):
             ])
     return output
 
-serve(app, host='0.0.0.0', port=8080)
+#serve(app, host='0.0.0.0', port=8080)
