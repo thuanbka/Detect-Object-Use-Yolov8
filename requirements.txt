@@ -2,4 +2,4 @@ py-cpuinfo
 flask
 ultralytics
 pillow
-Gunicorn
+waitress
