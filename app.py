@@ -35,7 +35,7 @@ def detect_objects_on_image(buf, type_image):
   try:
     print("Run with CPU.")
     #logging.info('Run with CPU.')
-    results = model.predict(source = buf, device='cpu',conf=0.5,imgsz=320)
+    results = model.predict(source = buf, device='cpu',imgsz=320)
     result = results[0]
   except Exception as ex:
     print(ex)
