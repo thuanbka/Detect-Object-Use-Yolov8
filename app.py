@@ -4,6 +4,8 @@ from PIL import Image
 from flask import Flask, render_template, request, Response
 import json
 
+#import logging
+
 #model = YOLO("yolov8m.pt")
 app = Flask(__name__)
 
@@ -32,7 +34,8 @@ def detect_objects_on_image(buf, type_image):
   result = None
   try:
     print("Run with CPU.")
-    results = model.predict(source = buf, device='cpu')
+    #logging.info('Run with CPU.')
+    results = model.predict(source = buf, device='cpu',conf=0.5,imgsz=320)
     result = results[0]
   except Exception as ex:
     print(ex)
@@ -52,4 +55,12 @@ def detect_objects_on_image(buf, type_image):
             ])
   return output
 
+# import resource 
+ 
+# def limit_memory(maxsize): 
+#     soft, hard = resource.getrlimit(resource.RLIMIT_AS) 
+#     resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard)) 
+# limit_memory(512)
 serve(app, host='0.0.0.0', port=8080)
+#gunicorn app:app  --workers 5 --timeout 100
+#https://stackoverflow.com/questions/67637004/gunicorn-worker-terminated-with-signal-9
