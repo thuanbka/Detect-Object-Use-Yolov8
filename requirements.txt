@@ -1,4 +1,5 @@
 flask
 ultralytics
-pillow
+pillow==9.5.0
+easyocr
 Gunicorn

@@ -3,7 +3,7 @@
 from PIL import Image
 from flask import Flask, render_template, request, Response
 import json
-from service.detect_image import DetectImage
+import service.detect_image as DetectImage
 app = Flask(__name__)
 
 @app.route("/")
